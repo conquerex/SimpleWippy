@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="info"
+            type="com.simplewippy.main.WippyMain" />
+    </data>
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white_100">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="360dp">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/pagerWippyProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabWippyProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="29dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    app:tabBackground="@drawable/tab_selector"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp"/>
+
+            </RelativeLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="18dp"
+                android:paddingEnd="16dp"
+                tools:background="@color/sample_yellow">
+
+                <TextView
+                    android:id="@+id/textWippyName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="@{info.name + @string/div1 + info.age}"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark"
+                    android:fontFamily="@font/font_nanum_gothic_bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="상민이는이름이열글자, 23"/>
+
+                <TextView
+                    android:id="@+id/textWippyVerify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/verify_by_phone"
+                    android:textSize="12sp"
+                    android:textColor="@color/dark"
+                    android:fontFamily="@font/font_nanum_gothic"
+                    android:visibility="@{info.is_verify_mobile ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintTop_toTopOf="@id/textWippyName"
+                    app:layout_constraintBottom_toBottomOf="@id/textWippyName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:visibility="visible"/>
+
+                <ImageView
+                    android:id="@+id/imageWippyVerify"
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:src="@drawable/profile_phone_mark_icon"
+                    android:adjustViewBounds="true"
+                    android:visibility="@{info.is_verify_mobile ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintEnd_toStartOf="@id/textWippyVerify"
+                    app:layout_constraintTop_toTopOf="@id/textWippyName"
+                    app:layout_constraintBottom_toBottomOf="@id/textWippyName"
+                    tools:visibility="visible"/>
+
+                <TextView
+                    android:id="@+id/textWippyAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="@{info.location + @string/div1 + info.distance}"
+                    android:textSize="14sp"
+                    android:textColor="@color/dark"
+                    android:fontFamily="@font/font_nanum_gothic"
+                    app:layout_constraintTop_toBottomOf="@id/textWippyName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="test"/>
+
+                <TextView
+                    android:id="@+id/textWippyHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="22dp"
+                    android:text="@{info.height + @string/div2 + info.age}"
+                    android:textSize="14sp"
+                    android:textColor="@color/dark"
+                    android:fontFamily="@font/font_nanum_gothic"
+                    app:layout_constraintTop_toBottomOf="@id/textWippyAddress"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:text="test"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                style="@style/wippyMainLayout">
+
+                <TextView
+                    style="@style/wippyMainTitle"
+                    android:text="학교" />
+
+                <TextView
+                    android:id="@+id/textWippySchoolContent"
+                    android:text="@{info.education_level}"
+                    style="@style/wippyMainContent"
+                    tools:text="말이 통하고, 진심을 나누는 사람. 쉼이 되고픈 사람." />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wippyMainLayout">
+
+                <TextView
+                    style="@style/wippyMainTitle"
+                    android:text="직업" />
+
+                <TextView
+                    android:id="@+id/textWippyJobContent"
+                    android:text="@{info.basic_occupation}"
+                    style="@style/wippyMainContent"
+                    tools:text="말이 통하고, 진심을 나누는 사람. 쉼이 되고픈 사람." />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wippyMainLayout">
+
+                <TextView
+                    style="@style/wippyMainTitle"
+                    android:text="내 소개" />
+
+                <TextView
+                    android:id="@+id/textWippyDescContent"
+                    android:text="@{info.description}"
+                    style="@style/wippyMainContent"
+                    tools:text="말이 통하고, 진심을 나누는 사람. 쉼이 되고픈 사람." />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                style="@style/wippyMainLayout">
+
+                <TextView
+                    style="@style/wippyMainTitle"
+                    android:text="종교" />
+
+                <TextView
+                    android:id="@+id/textWippyReligionContent"
+                    android:text="@{info.religion}"
+                    style="@style/wippyMainContent"
+                    tools:text="말이 통하고, 진심을 나누는 사람. 쉼이 되고픈 사람." />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wippyMainLayout">
+
+                <TextView
+                    style="@style/wippyMainTitle"
+                    android:text="음주" />
+
+                <TextView
+                    android:id="@+id/textWippyAlcoholContent"
+                    android:text="@{info.alcohol}"
+                    style="@style/wippyMainContent"
+                    tools:text="말이 통하고, 진심을 나누는 사람. 쉼이 되고픈 사람." />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wippyMainLayout">
+
+                <TextView
+                    style="@style/wippyMainTitle"
+                    android:text="흡연" />
+
+                <TextView
+                    android:id="@+id/textWippySmokeContent"
+                    android:text="@{info.smoke}"
+                    style="@style/wippyMainContent"
+                    tools:text="말이 통하고, 진심을 나누는 사람. 쉼이 되고픈 사람." />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="86dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

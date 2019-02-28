@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SimpleWippy</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile">프로필</string>
+    <string name="verify_by_phone">전화번호 인증됨</string>
+    <string name="div1">", "</string>
+    <string name="div2">"cm, "</string>
+</resources>
